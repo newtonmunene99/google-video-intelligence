@@ -3,7 +3,7 @@ import { promises as fs } from "fs";
 import { annotateVideoWithLabels } from "../../lib/google";
 import cloudinary from "../../lib/cloudinary";
 
-export default async (req, res) => {
+const videosController = async (req, res) => {
   // Check the incoming http method. Handle the POST request method and reject the rest.
   switch (req.method) {
     // Handle the POST request method
@@ -74,3 +74,5 @@ const handleCloudinaryUpload = (path) => {
     );
   });
 };
+
+export default videosController;
