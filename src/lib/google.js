@@ -1,11 +1,19 @@
 import { VideoIntelligenceServiceClient } from "@google-cloud/video-intelligence";
 
 // Create a new Video intelligence service client
+// const client = new VideoIntelligenceServiceClient({
+//   // Google cloud platform project id
+//   projectId: "pitstop-1531897526190",
+//   // Path to your credentials json file
+//   keyFilename: "credentials.json",
+// });
 const client = new VideoIntelligenceServiceClient({
   // Google cloud platform project id
-  projectId: "pitstop-1531897526190",
-  // Path to your credentials json file
-  keyFilename: "credentials.json",
+  projectId: process.env.GCP_PROJECT_ID,
+  credentials: {
+    client_email: process.env.GCP_CLIENT_EMAIL,
+    private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/gm, "\n"),
+  },
 });
 
 /**
